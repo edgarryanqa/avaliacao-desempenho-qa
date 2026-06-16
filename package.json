@@ -1,0 +1,22 @@
+{
+  "name": "avaliacao-desempenho",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Módulo de Avaliação de Desempenho (SaaS RH) — aplicação-alvo de teste técnico de QA",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "preinstall": "node scripts/check-node.mjs",
+    "predev": "node scripts/check-node.mjs",
+    "dev": "concurrently -n backend,frontend -c blue,magenta \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
