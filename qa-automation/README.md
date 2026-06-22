@@ -87,7 +87,22 @@ Os casos de API planejados pela empresa estão documentados em:
 
 A automação busca dar cobertura aos fluxos principais e aos cenários de borda definidos nesses arquivos.
 
+
+
+
+## Estratégia de Gestão de Estado
+
+A aplicação utiliza SQLite em memória, portanto todos os dados são recriados a cada inicialização do servidor.
+
+Para garantir previsibilidade e independência dos testes:
+
+- Os testes foram desenvolvidos considerando o estado inicial fornecido pelo seed da aplicação.
+- Sempre que necessário, os cenários criam seus próprios dados.
+- Recomenda-se reiniciar a aplicação antes de executar a suíte completa.
+- Os testes não dependem da ordem de execução.
+
 ## Passos recomendados para validação
+
 
 1. Iniciar o backend:
    `powershell
