@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { api } from '../api.js';
 
 export default function Competencies() {
@@ -7,6 +7,7 @@ export default function Competencies() {
   const [editing, setEditing] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const nameRef = useRef(null);
 
   async function load() {
     setLoading(true);
@@ -24,6 +25,11 @@ export default function Competencies() {
   async function submit(e) {
     e.preventDefault();
     setError('');
+    if (!name || !name.trim()) {
+      setError('Nome é obrigatório');
+      nameRef.current?.focus();
+      return;
+    }
     try {
       if (editing) await api.put(`/competencies/${editing}`, { name });
       else await api.post('/competencies', { name });
@@ -54,7 +60,7 @@ export default function Competencies() {
         <h3>{editing ? 'Editar competência' : 'Nova competência'}</h3>
         <form onSubmit={submit}>
           <label>Nome</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Ex.: Comunicação" />
+          <input ref={nameRef} value={name} onChange={(e) => setName(e.target.value)} placeholder="Ex.: Comunicação" />
           <div className="inline">
             <button className="btn" type="submit">{editing ? 'Salvar' : 'Cadastrar'}</button>
             {editing && (
