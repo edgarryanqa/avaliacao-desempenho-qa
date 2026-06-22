@@ -68,9 +68,9 @@ npx playwright show-report qa-automation/test-results
 
 A automação foi planejada para validar:
 
-- CRUD de competências e validações negativas (nome vazio, exclusão em uso, atualização inválida).
-- CRUD de times e hierarquia organizacional (time raiz, time filho, ciclo hierárquico, exclusão com vínculos).
-- CRUD de colaboradores, incluindo gestor e validações de associação (time inexistente, gestor inválido, exclusão com subordinados/avaliações).
+Criação de competências e validações de negócio
+Criação de times e validações hierárquicas
+Criação de colaboradores e validações de associação
 - Gestão de ciclos de avaliação, incluindo criação, ativação, regras de datas, validação de pesos, bloqueio de edição e encerramento.
 - Geração e resposta de avaliações, incluindo autoavaliação, gestor, pares, validações de notas e regras de período.
 - Relatórios analíticos, sintéticos e de resultados, incluindo parâmetros obrigatórios, ciclo inexistente, consistência de dados e aplicação de pesos.
@@ -122,3 +122,15 @@ Para garantir previsibilidade e independência dos testes:
 - Caso queira rodar apenas os testes de API, selecione os testes que focam nos endpoints.
 - Caso queira rodar apenas os testes de interface, utilize os arquivos que dependem dos Page Objects em qa-automation/pages/.
 - Mantenha o aplicativo rodando para os testes de interface funcionarem corretamente.
+
+## Ferramenta Escolhida
+
+A automação foi desenvolvida utilizando Playwright.
+
+### Motivos da escolha
+
+- Suporte nativo para testes E2E e API.
+- Execução rápida e paralela.
+- Relatórios integrados.
+- Facilidade de manutenção através do padrão Page Object.
+- Boa integração com aplicações modernas baseadas em JavaScript.
